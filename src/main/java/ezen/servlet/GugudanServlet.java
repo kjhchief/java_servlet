@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 // 서블릿을 서블릿 컨테이너에 등록(deploy) 할 때 방법 2
 // 패스형식
-@WebServlet("/gugudan")
+@WebServlet("/gugudan") // 서블릿 컨테이너에게 주는 정보 
 // 확장자 형식
 //@WebServlet("xxx/yyy/gugudan.action")
 public class GugudanServlet extends HttpServlet {
@@ -26,6 +26,9 @@ public class GugudanServlet extends HttpServlet {
 	 */
 	// doGet 호출은? 서블릿 컨테이너가 알아서 메모리에 생성함. 알아서 호출함. 근데 쓰레드로.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println(request);
+		System.out.println(response);
 		
 		String requestMethod = request.getMethod();
 		String requestUri = request.getRequestURI();
