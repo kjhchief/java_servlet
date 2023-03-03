@@ -31,10 +31,7 @@ public class LifecycleTestServlet extends HttpServlet {
 	private static final String url = "jdbc:oracle:thin:@localhost:1521:xe"; // Oracle
 	private static final String user = "hr";
 	private static final String password = "hr";
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public LifecycleTestServlet() {
         System.out.println("서블릿 컨테이너에 의해 서블릿 생성됨...");
         System.out.println(this instanceof Servlet);

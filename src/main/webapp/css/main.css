@@ -1,0 +1,41 @@
+#container {
+	width: 100%;
+	border: 1px solid blue;
+}
+
+header {
+	height: 80px;
+	background: yellow;
+}
+
+nav {
+	height: 30px;
+	background: green;
+}
+
+nav>ul>li {
+	display: inline-block;
+	width: 100px;
+}
+
+section, aside {
+	float: right;
+}
+
+section {
+	background: gold;
+	width: 80%;
+	height: 500px;
+}
+
+aside {
+	background: orange;
+	width: 20%;
+	height: 500px;
+}
+
+footer {
+	background: green;
+	height: 70px;
+	clear: both;
+}

@@ -6,5 +6,21 @@
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+
+<!-- 서블릿 등록  -->  
+<servlet>
+	<servlet-name>HTTPServletResponseExample</servlet-name>
+	<servlet-class>ezen.servlet.HTTPServletResponseExample</servlet-class>
+	<init-param>
+		<param-name>fileStorage</param-name>
+		<param-value>C:/ezen-academy/workspace/java_servlet/src/main/fileStorage/</param-value>
+	</init-param>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>HTTPServletResponseExample</servlet-name>
+	<url-pattern>/response</url-pattern>
+
+</servlet-mapping>
   
 </web-app>

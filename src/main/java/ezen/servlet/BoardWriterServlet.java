@@ -24,7 +24,11 @@ public class BoardWriterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String writer = request.getParameter("writer");
 		String title = request.getParameter("title");
+		System.out.println(writer);
+		System.out.println(title);
 		// DB 테이블 인서트 했다고 가정
+		
+		System.out.println("게시판 글쓰기 서블릿 요청");
 		
 		// 게시판 목록을 보여주는 서블릿으로 자동 요청처리(디스패치)
 		// response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);//302
