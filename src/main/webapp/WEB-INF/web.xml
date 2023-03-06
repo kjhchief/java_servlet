@@ -6,6 +6,14 @@
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- 서블린 컨테이너에 의해 관리되는 모든 서블릿 설정 정보 -->
+  <context-param>
+  	<param-name>uploadPath</param-name>
+  	 <param-value>c:/ezen-academy/fileStorage</param-value> 
+    <!-- <param-value>c:/ezen-academy/fileUpload</param-value> -->
+  	
+  </context-param>
 
 <!-- 서블릿 등록  -->  
 <servlet>

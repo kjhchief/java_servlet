@@ -2,9 +2,11 @@ package ezen.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,9 +27,26 @@ public class MainServlet extends HttpServlet {
 		PrintWriter out= response.getWriter();
 		
 		// 사용자 로그인 정보가 저장되어 있는 HttpSession을 접근
-		HttpSession session= request.getSession();
-		String loginId = (String) session.getAttribute("loginId");
-		String item = (String) session.getAttribute("item");
+//		HttpSession session= request.getSession();
+//		String loginId = (String) session.getAttribute("loginId");
+//		String item = (String) session.getAttribute("item");
+		String loginId = null;
+		String item = null;
+		
+		// 쿠키 정보 읽기
+		Cookie[] cookies= request.getCookies();
+		if(cookies != null) {
+			for (Cookie cookie : cookies) {
+				String cookieName = cookie.getName();
+				if(cookieName.equalsIgnoreCase("loginId")) {
+					loginId = cookie.getValue();
+				}
+				if(cookieName.equalsIgnoreCase("item")) {
+					item = cookie.getValue();
+					item = URLDecoder.decode(item, "utf-8");
+				}
+			}
+		}
 		
 		out.println("<!DOCTYPE html>");
 		out.println("<html lang=\"ko\">");
@@ -47,8 +66,9 @@ public class MainServlet extends HttpServlet {
 		if(loginId == null) {
 			out.println("<form action=\"login\" style=\"text-align: right;\" method=\"post\">");
 			out.println("<label>아이디 : <input type=\"text\" name=\"id\"></label>");
-			out.println("<label>비밀번호 : <input type=\"password\" name=\"password\">");
-			out.println("</label> <input type=\"submit\" value=\"로그인\">");
+			out.println("<label>비밀번호 : <input type=\"password\" name=\"password\"></label>");
+			out.println("<label>자동 로그인 : <input type=\"checkbox\" name=\"saveid\" value=\"save\"></label>");
+			out.println("<input type=\"submit\" value=\"로그인\">");
 			out.println("</form>");			
 		}else {
 			out.println("<p style=\"text-align: right;\">"+loginId+"님 로그인 중...");
